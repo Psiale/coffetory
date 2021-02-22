@@ -1,0 +1,2 @@
+class RawMaterialsController < ApplicationController
+end
