@@ -1,11 +1,13 @@
 class CoffeeShopsController < ApplicationController
+  before_action :set_coffee_shop, only: [:show, :update, :destroy]
   def index
-    @coffee_shop = current_user.coffee_shops
+    puts "#{current_owner}"
+    @coffee_shop = current_owner.coffee_shops
     json_response(@coffee_shop)
   end
 
   def create
-    @coffee_shop = current_user.coffee_shops.create!(coffee_shop_params)
+    @coffee_shop = current_owner.coffee_shops.create!(coffee_shop_params)
     json_response(@coffee_shop, :created)
   end
 
@@ -26,7 +28,7 @@ class CoffeeShopsController < ApplicationController
   private
 
   def coffee_shop_params
-    params.permit(:id, :name, :avatar, :owner_id)
+    params.permit(:id, :name, :avatar)
   end
 
   def set_coffee_shop
