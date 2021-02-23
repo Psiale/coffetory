@@ -1,11 +1,11 @@
-class AuthenticateUser
+class AuthenticateOwner
   def initialize(email, password)
     @email = email
     @password = password
   end
 
   def call
-    JsonWebToken.encode(user_id: user.id) if user
+    JsonWebToken.encode(owner_id: owner.id) if owner
   end
 
   private
@@ -13,9 +13,9 @@ class AuthenticateUser
   attr_reader :email, :password
 
   # verify user credentials
-  def user
-    user = User.find_by(email: email)
-    return user if user && user.authenticate(password)
+  def owner
+    owner = Owner.find_by(email: email)
+    return owner if owner && owner.authenticate(password)
 
     #raise Authentication error if credentials are invalid
     raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)

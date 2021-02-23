@@ -7,7 +7,7 @@ class AuthorizeApiRequest
 
   def call
     {
-      user: user
+      owner: owner
     }
   end
 
@@ -15,10 +15,10 @@ class AuthorizeApiRequest
 
   attr_reader :headers
 
-  def user
-    # check if user is in the db
+  def owner
+    # check if owner is in the db
     # memoize user object
-    @user ||= User.find(decoded_auth_token[:user]) if decoded_auth_token
+    @owner ||= Owner.find(decoded_auth_token[:owner]) if decoded_auth_token
 
     #handle user not found
   rescue ActiveRecord::RecordNotFound => e 

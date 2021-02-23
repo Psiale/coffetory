@@ -5,16 +5,26 @@ class RawMaterialsController < ApplicationController
   before_action :set_raw_material
 
   def index
-    render json: @coffee_shop.raw_materials
+    json_response(@coffee_shop.raw_materials)
   end
 
   def create
     @coffee_shop.raw_materials.create!(raw_material_params)
-    render json: @coffee_shop
+    json_response(@coffee_shop, :created)
   end
 
   def show
-    render json: @raw_material
+    json_response(@raw_material)
+  end
+
+  def update
+    @raw_material.update(raw_material_params)
+    head :no_content
+  end
+
+  def destroy
+    @raw_material.destroy
+    head :no_content
   end
 
   private

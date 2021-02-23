@@ -12,7 +12,7 @@ class Message
   end
 
   def self.missing_token
-    'Missing token'
+    'Missing token POST your credentials into /signup'
   end
 
   def self.unauthorized

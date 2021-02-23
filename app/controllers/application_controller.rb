@@ -3,11 +3,11 @@ class ApplicationController < ActionController::API
   include ExceptionHandler
 
   before_action :authorize_request
-  attr_reader :current_user
+  attr_reader :current_owner
 
   private
 
   def authorize_request
-    @current_user = (AuthorizeApiRequest.new(request.headers).call)[:user]
+    @current_owner = (AuthorizeApiRequest.new(request.headers).call)[:owner]
   end
 end
