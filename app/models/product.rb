@@ -3,4 +3,5 @@ class Product < ApplicationRecord
   belongs_to :coffee_shop
   validates_presence_of :name
   validates_presence_of :cost
+  
 end
