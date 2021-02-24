@@ -21,9 +21,9 @@ class ProductsController < ApplicationController
     head :no_content
   end
 
-  def update_product_raw_materials(raw_materials)
-    puts product_raw_materials
-      raw_materials = product_raw_materials[:raw_materials]
+  def update_product_raw_materials
+      raw_materials = product_params[:product_raw_materials]
+      puts "#type of raw_materials: #{raw_materials}"
       @product.raw_materials = []
       @product.raw_materials << raw_materials
   end
@@ -50,6 +50,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.permit(:name, :cost, :product_raw_materials)
+    params.permit(:name, :cost, :product_raw_materials, :coffee_shop_id, :id)
   end
 end
