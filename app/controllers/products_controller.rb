@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_coffee_shop
-  before_action :set_product, except: :index
+  before_action :set_product, except: [:index, :create]
   def index
   @products = @coffee_shop.products
       json_response(@products)
