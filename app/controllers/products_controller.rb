@@ -1,9 +1,14 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:update, :destroy]
   before_action :set_coffee_shop
+  before_action :set_product, except: :index
   def index
   @products = @coffee_shop.products
       json_response(@products)
+  end
+
+  def show
+    puts "are there params? #{params} whats in product: #{@product}"
+    json_response(@product)
   end
 
   def create
@@ -14,6 +19,18 @@ class ProductsController < ApplicationController
   def update
     @product.update(product_params)
     head :no_content
+  end
+
+  def update_product_raw_materials(raw_materials)
+    puts product_raw_materials
+      raw_materials = product_raw_materials[:raw_materials]
+      @product.raw_materials = []
+      @product.raw_materials << raw_materials
+  end
+
+  def raw_materials
+    json_response(@product.raw_materials) unless @product.raw_materials.empty?
+    
   end
 
   def destroy
@@ -33,6 +50,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.permit(:name, :cost)
+    params.permit(:name, :cost, :product_raw_materials)
   end
 end

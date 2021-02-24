@@ -1,7 +1,6 @@
 class CoffeeShopsController < ApplicationController
   before_action :set_coffee_shop, only: [:show, :update, :destroy]
   def index
-    puts "#{current_owner}"
     @coffee_shop = current_owner.coffee_shops
     json_response(@coffee_shop)
   end
