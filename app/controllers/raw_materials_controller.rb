@@ -2,7 +2,7 @@ class RawMaterialsController < ApplicationController
 
   before_action :set_coffee_shop
 
-  before_action :set_raw_material
+  before_action :set_raw_material, only: [:update, :destroy]
 
   def index
     json_response(@coffee_shop.raw_materials)

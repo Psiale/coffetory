@@ -18,7 +18,6 @@ class AuthorizeApiRequest
   def owner
     # check if owner is in the db
     # memoize user object
-    puts "heeeeeeeeeelo #{decoded_auth_token[:owner]}"
     @owner ||= Owner.find(decoded_auth_token[:owner_id]) if decoded_auth_token
 
     #handle user not found
