@@ -10,7 +10,7 @@ class RawMaterialsController < ApplicationController
 
   def create
     @coffee_shop.raw_materials.create!(raw_material_params)
-    json_response(@coffee_shop, :created)
+    json_response(@coffee_shop.raw_materials, :created)
   end
 
   def show
