@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = @coffee_shop.products.create!(product_params)
-    json_response(coffee_shop.products, :created)
+    json_response(@coffee_shop.products, :created)
   end
 
   def update
