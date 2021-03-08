@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
   end
 
   def raw_materials
-    json_response(@product.raw_materials) unless @product.raw_materials.empty?
+    json_response(@product.raw_materials)
     
   end
 
