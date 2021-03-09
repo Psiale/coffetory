@@ -24,10 +24,13 @@ class ProductsController < ApplicationController
   end
 
   def update_product_raw_materials
-      raw_materials = params[:product_raw_materials]
+      raw_materials = JSON.parse(params[:product_raw_materials])
 #      parsed = JSON.parse raw_materials.as_json
-      @product.raw_materials = []
-      @product.raw_materials << raw_materials
+      raw_materials.each do |material| 
+        raw = RawMaterial.create!(id: material.id, name: material.name, total_amount: material.total_amount, remaining_amount: material.remaining_amount)
+        puts raw
+        @product.raw_materials << raw
+      end
       json_response(@product.raw_materials)
   end
 
