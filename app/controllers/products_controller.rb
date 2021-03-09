@@ -1,3 +1,5 @@
+require 'json'
+require 'ostruct'
 class ProductsController < ApplicationController
   before_action :set_coffee_shop
   before_action :set_product, except: [:index, :create]
@@ -22,10 +24,11 @@ class ProductsController < ApplicationController
   end
 
   def update_product_raw_materials
-      raw_materials = product_params[:product_raw_materials]
-      puts "#type of raw_materials: #{raw_materials}"
+      raw_materials = params[:product_raw_materials]
+#      parsed = JSON.parse raw_materials.as_json
       @product.raw_materials = []
       @product.raw_materials << raw_materials
+      json_response(@product.raw_materials)
   end
 
   def raw_materials
