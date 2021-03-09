@@ -24,14 +24,12 @@ class ProductsController < ApplicationController
   end
 
   def update_product_raw_materials
-      raw_materials = JSON.parse(params[:product_raw_materials])
-#      parsed = JSON.parse raw_materials.as_json
-      raw_materials.each do |material| 
-        raw = RawMaterial.create!(id: material.id, name: material.name, total_amount: material.total_amount, remaining_amount: material.remaining_amount)
-        puts raw
-        @product.raw_materials << raw
-      end
-      json_response(@product.raw_materials)
+      raw_materials_ids = JSON.parse(params[:product_raw_materials])
+      raw_materials = raw_materials_ids.map{|id| RawMaterial.find(id)}
+      puts raw_materials_ids
+      puts raw_materials
+      @product.raw_materials << raw_materials
+      json_response(@product.raw_materials, :created)
   end
 
   def raw_materials
