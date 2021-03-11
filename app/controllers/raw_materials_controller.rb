@@ -19,7 +19,7 @@ class RawMaterialsController < ApplicationController
 
   def update
     @raw_material.update(raw_material_params)
-    json_response(@raw_material, :updated)
+    json_response(@raw_material)
   end
 
   def destroy
