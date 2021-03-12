@@ -19,7 +19,7 @@ class RawMaterialsController < ApplicationController
 
   def update
     @raw_material.update(raw_material_params)
-    json_response(@raw_material)
+    json_response(@coffee_shop.raw_materials)
   end
 
   def destroy
