@@ -38,3 +38,4 @@ The API is hosted on Heroku, at this endpoint: [Coffetory API](https://coffetory
     - POST - for createing raw materials belonging to that business
 - `/business/:id/raw_materials/:id`
     - PUT - for updating the raw material
+
