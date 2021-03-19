@@ -18,9 +18,7 @@ class AuthorizeApiRequest
   def owner
     # check if owner is in the db
     # memoize user object
-    puts "#{decoded_auth_token}"
-    @owner ||=  Owner.find(decoded_auth_token[:owner_id]) if decoded_auth_token
-
+    @owner ||= Owner.find(decoded_auth_token[:owner_id]) if decoded_auth_token
     # handle user not found
   rescue ActiveRecord::RecordNotFound => e
     # raise custom error
@@ -37,9 +35,7 @@ class AuthorizeApiRequest
 
   # Check for token in 'Authorization' header
   def http_auth_header
-    if headers['Authorization'].present?
-      return headers['Authorization'].split(' ').last
-    end
+    return headers['Authorization'].split(' ').last if headers['Authorization'].present?
 
     raise(ExceptionHandler::MissingToken, Message.missing_token)
   end
