@@ -19,7 +19,7 @@ class AuthorizeApiRequest
     # check if owner is in the db
     # memoize user object
     puts "#{decoded_auth_token}"
-    @owner ||= decoded_auth_token& Owner.find(decoded_auth_token[:owner_id]) if
+    @owner ||=  Owner.find(decoded_auth_token[:owner_id]) if decoded_auth_token
 
     # handle user not found
   rescue ActiveRecord::RecordNotFound => e
