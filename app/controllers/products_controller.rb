@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
   before_action :set_coffee_shop
   before_action :set_product, except: [:index, :create]
   def index
-  @products = @coffee_shop.products
-      json_response(@products)
+    @products = @coffee_shop.products
+    json_response(@products)
   end
 
   def show
@@ -24,17 +24,16 @@ class ProductsController < ApplicationController
   end
 
   def update_product_raw_materials
-      raw_materials_ids = JSON.parse(params[:product_raw_materials])
-      raw_materials = raw_materials_ids.map{|id| RawMaterial.find(id)}
-      puts raw_materials_ids
-      puts raw_materials
-      @product.raw_materials << raw_materials
-      json_response(@product.raw_materials, :created)
+    raw_materials_ids = JSON.parse(params[:product_raw_materials])
+    raw_materials = raw_materials_ids.map { |id| RawMaterial.find(id) }
+    puts raw_materials_ids
+    puts raw_materials
+    @product.raw_materials << raw_materials
+    json_response(@product.raw_materials, :created)
   end
 
   def raw_materials
     json_response(@product.raw_materials)
-    
   end
 
   def destroy
@@ -43,7 +42,6 @@ class ProductsController < ApplicationController
   end
 
   private
-
 
   def set_coffee_shop
     @coffee_shop = CoffeeShop.find(params[:coffee_shop_id])

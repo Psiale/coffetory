@@ -17,7 +17,7 @@ class AuthenticateOwner
     owner = Owner.find_by(email: email)
     return owner if owner && owner.authenticate(password)
 
-    #raise Authentication error if credentials are invalid
+    # raise Authentication error if credentials are invalid
     raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
   end
 end

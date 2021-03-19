@@ -11,7 +11,7 @@ class CoffeeShopsController < ApplicationController
   end
 
   def show
-    json_response(@coffee_shop)    
+    json_response(@coffee_shop)
   end
 
   def update

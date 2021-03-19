@@ -1,5 +1,4 @@
 class RawMaterialsController < ApplicationController
-
   before_action :set_coffee_shop
 
   before_action :set_raw_material, only: [:update, :destroy]

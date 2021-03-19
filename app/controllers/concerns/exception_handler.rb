@@ -33,6 +33,6 @@ module ExceptionHandler
   end
 
   def five_hundred(event)
-    json_response({message: event.exception }, :internal_server_error)
+    json_response({ message: event.exception }, :internal_server_error)
   end
 end
