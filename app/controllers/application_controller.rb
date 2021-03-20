@@ -8,6 +8,6 @@ class ApplicationController < ActionController::API
   private
 
   def authorize_request
-    @current_owner = (AuthorizeApiRequest.new(request.headers).call)[:owner]
+    @current_owner = AuthorizeApiRequest.new(request.headers).call[:owner]
   end
 end
