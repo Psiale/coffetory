@@ -39,3 +39,7 @@ The API is hosted on Heroku, at this endpoint: [Coffetory API](https://coffetory
 - `/business/:id/raw_materials/:id`
     - PUT - for updating the raw material
 
+<!-- ABOUT THE PROJECT-->
+## 🤟🏽😄 😛🤙🏾  Creator
+
+Alexis Sanchez - [Github](https://github.com/Psiale)
