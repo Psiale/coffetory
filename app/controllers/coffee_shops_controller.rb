@@ -15,8 +15,9 @@ class CoffeeShopsController < ApplicationController
   end
 
   def update
+    coffee_shop = set_coffee_shop
     coffee_shop.update(coffee_shop_params)
-    head :no_content
+    json_response(coffee_shop)
   end
 
   def destroy
@@ -31,6 +32,6 @@ class CoffeeShopsController < ApplicationController
   end
 
   def set_coffee_shop
-    coffee_shop = CoffeeShop.find(params[:id])
+    CoffeeShop.find(params[:id])
   end
 end
