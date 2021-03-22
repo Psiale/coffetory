@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_02_23_051952) do
 
   create_table "coffee_shops", force: :cascade do |t|
-    t.string "name"
+    t.text "name"
     t.text "avatar"
     t.integer "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -22,17 +22,17 @@ ActiveRecord::Schema.define(version: 2021_02_23_051952) do
   end
 
   create_table "owners", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password"
-    t.string "password_digest"
+    t.text "name"
+    t.text "email"
+    t.text "password"
+    t.text "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.string "cost"
+    t.text "name"
+    t.float "cost"
     t.integer "coffee_shop_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_051952) do
   end
 
   create_table "raw_materials", force: :cascade do |t|
-    t.string "name"
+    t.text "name"
     t.float "total_amount"
     t.float "remaining_amount"
     t.integer "coffee_shop_id", null: false
