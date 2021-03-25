@@ -4,5 +4,5 @@ class CoffeeShop < ApplicationRecord
   validates_presence_of :name
   validates_uniqueness_of :name, { scope: :user_id }
 
-  scope :first_business, -> {where(user_id: @current_user).first}
+  scope :first_business, -> { where(user_id: @current_user).first }
 end
