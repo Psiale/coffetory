@@ -1,12 +1,12 @@
 class CoffeeShopsController < ApplicationController
   before_action :set_coffee_shop, only: [:show, :update, :destroy]
   def index
-    coffee_shop = CoffeeShop.where(owner_id: @current_owner).first
+    coffee_shop = CoffeeShop.where(user_id: @current_user).first
     json_response(coffee_shop)
   end
 
   def create
-    coffee_shop = current_owner.coffee_shops.create!(coffee_shop_params)
+    coffee_shop = current_user.coffee_shops.create!(coffee_shop_params)
     json_response(coffee_shop, :created)
   end
 
