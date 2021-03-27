@@ -1,7 +1,7 @@
 class CoffeeShopsController < ApplicationController
   before_action :set_coffee_shop, only: [:show, :update, :destroy]
   def index
-    coffee_shop = CoffeeShop.first_business
+    coffee_shop = current_user.coffee_shops.first
     json_response(coffee_shop)
   end
 
