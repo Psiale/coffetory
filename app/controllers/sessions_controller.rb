@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :create
   def create
     auth_token =
       AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
