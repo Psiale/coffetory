@@ -4,12 +4,12 @@ class RawMaterialsController < ApplicationController
   before_action :set_raw_material, only: [:update, :destroy]
 
   def index
-    json_response(@coffee_shop.raw_materials)
+    json_response(@coffee_shop.raw_materials.last_created)
   end
 
   def create
     @coffee_shop.raw_materials.create!(raw_material_params)
-    json_response(@coffee_shop.raw_materials, :created)
+    json_response(@coffee_shop.raw_materials.last_created, :created)
   end
 
   def show
@@ -18,7 +18,7 @@ class RawMaterialsController < ApplicationController
 
   def update
     @raw_material.update(raw_material_params)
-    json_response(@coffee_shop.raw_materials)
+    json_response(@coffee_shop.raw_materials.last_created)
   end
 
   def destroy
