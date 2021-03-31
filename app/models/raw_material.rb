@@ -4,5 +4,5 @@ class RawMaterial < ApplicationRecord
   validates_uniqueness_of :name, { scope: :coffee_shop_id }
   validates_presence_of :total_amount
   validates_presence_of :remaining_amount
-  scope :last_created, -> {created_at: :desc}
+  scope :last_created, -> { order(created_at: :desc) }
 end
