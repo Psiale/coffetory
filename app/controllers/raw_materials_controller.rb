@@ -23,7 +23,7 @@ class RawMaterialsController < ApplicationController
 
   def destroy
     @raw_material.destroy
-    head :no_content
+    json_response(@coffee_shop.raw_materials.last_created)
   end
 
   private
