@@ -3,7 +3,7 @@ class CreateCoffeeShops < ActiveRecord::Migration[6.0]
     create_table :coffee_shops do |t|
       t.string :name
       t.text :avatar
-      t.references :owner, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

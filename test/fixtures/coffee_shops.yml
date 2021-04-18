@@ -3,9 +3,9 @@
 one:
   name: MyString
   avatar: MyText
-  owner: one
+  user: one
 
 two:
   name: MyString
   avatar: MyText
-  owner: two
+  user: two
